@@ -4,7 +4,7 @@ namespace MLBasics;
 class Program
 {
     const int POP_SIZE = 10000;
-    const int SUB_POP_COUNT = 10;
+    const int SUB_POP_COUNT = 10000;
     const double MAX_ERROR = 0.00001;
     const int ITERATIONS = 1000;
     public static void Main()
@@ -36,8 +36,8 @@ class Program
         Console.WriteLine($"A: {coefficients.A}");
         Console.WriteLine($"B: {coefficients.B}");
         Console.WriteLine($"C: {coefficients.C}");
-        Console.WriteLine($"Training Time: {model.TrainingTime.TotalMilliseconds} ");
-        Console.WriteLine("Enter input values to predict:");
+        Console.WriteLine($"Training Time: {model.TrainingTime} ");
+        Console.WriteLine("Enter input values to predict: (or 'r' to continue training)");
         while (true)
         {
             var input = Console.ReadLine();
@@ -53,7 +53,7 @@ class Program
                 Console.WriteLine($"B: {coefficients.B}");
                 Console.WriteLine($"C: {coefficients.C}");
                 Console.WriteLine($"Training Time: {model.TrainingTime} ");
-                Console.WriteLine("Enter input values to predict:");
+                Console.WriteLine("Enter input values to predict: (or 'r' to continue training)");
                 continue;
             }
             var value = double.Parse(input);
