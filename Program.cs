@@ -11,19 +11,12 @@ class Program
     {
         var inputFile = "sampledata.txt";
         var lines = File.ReadAllLines(inputFile);
-        // var data = lines
-        //     .Select(x =>
-        //         x.Split(" ")
-        //     )
-        //     .Where(x => x.Length == 2)
-        //     .Select(x => new DataModel(double.Parse(x[0]), double.Parse(x[1])));
-        List<DataModel> data = new();
-        foreach (var line in lines)
-        {
-            var values = line.Split(" ", StringSplitOptions.RemoveEmptyEntries | StringSplitOptions.TrimEntries);
-            if (values.Length == 2)
-                data.Add(new DataModel(double.Parse(values[0]), double.Parse(values[1])));
-        }
+        var data = lines
+            .Select(x =>
+                x.Split(" ", StringSplitOptions.RemoveEmptyEntries | StringSplitOptions.TrimEntries)
+            )
+            .Where(x => x.Length == 2)
+            .Select(x => new DataModel(double.Parse(x[0]), double.Parse(x[1])));
         var model = new PredictionModel(POP_SIZE, SUB_POP_COUNT);
         model.TrainAsync(data, ITERATIONS, MAX_ERROR);
         var coefficients = model.BestCoefficients;
