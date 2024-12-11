@@ -1,4 +1,5 @@
 ﻿using System;
+
 namespace MLBasics;
 
 class Program
@@ -7,6 +8,7 @@ class Program
     const int SUB_POP_COUNT = 10000;
     const double MAX_ERROR = 0.00001;
     const int ITERATIONS = 1000;
+
     public static void Main()
     {
         var inputFile = "sampledata.txt";
